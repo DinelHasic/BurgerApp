@@ -1,0 +1,12 @@
+﻿@model BurgerMenuViewModel
+@*
+	For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div style="width: 18rem; margin:4em; display:inline-block">
+		<a asp-controller="Burger" asp-action="Detail" asp-route-name="@Model.BurgerName"><img style="width:100%" src=@Model.BurgerURL class="card-img-top" alt="..."></a>
+		<div class="card-body">
+			<h5 class="card-title" style="text-align:center">@Model.BurgerName</h5>
+		</div>
+	</div>

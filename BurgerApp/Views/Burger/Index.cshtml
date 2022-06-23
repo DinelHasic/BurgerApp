@@ -1,0 +1,10 @@
+﻿
+@model BurgerManueViewModelList
+
+
+<h1 style="color:#C82502;text-align:center">Burger Manue</h1>
+@foreach (BurgerMenuViewModel burger in @Model.Burgers)
+{
+	<partial name=_BurgerInfo model=burger></partial>
+}
+
