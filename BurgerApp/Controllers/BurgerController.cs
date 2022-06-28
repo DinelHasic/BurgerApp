@@ -88,19 +88,22 @@ namespace BurgerApp.Controllers
 
         public IActionResult Create()
         {
-            Burger newBurger = new Burger();
+            BurgerViewModel newBurger = new BurgerViewModel();
 
             return View(newBurger);
         }
 
         [HttpPost]
-        public IActionResult Create(Burger burger)
+        public IActionResult Create(BurgerViewModel newBurger)
         {
-            if (burger is null)
+            if (newBurger is null)
             {
                 return NotFound();
             }
 
+            Burger burger = new Burger();
+
+            burger.Update(newBurger);
             burger.SetId(Database.GetNextBurgerId());
             Database.Burgers.Add(burger);
 

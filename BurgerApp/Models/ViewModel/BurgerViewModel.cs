@@ -7,9 +7,12 @@ namespace BurgerApp.Models.ViewModel
     {
         public int BurgerId { get; set; }
 
+        [Required]
+        [StringLength(15,MinimumLength = 3)]
         [DisplayName("Name:")]
         public string BurgerName { get; set; }
 
+        [DataType(DataType.Currency)]
         [DisplayName("Price:")]
         public decimal BurgerPrice { get; set; }
 
@@ -23,6 +26,7 @@ namespace BurgerApp.Models.ViewModel
         public bool BurgerHasFries { get; set; }
 
         [DisplayName("Image URL:")]
+        [DataType(DataType.Url)]
         public string BurgerURL { get; set; }
 
 

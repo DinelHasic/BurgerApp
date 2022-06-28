@@ -8,23 +8,16 @@ namespace BurgerApp.Models.Domain
     {
         public int Id { get; set; }
 
-        [DisplayName("Name:")]
         public string Name { get; set; }
 
-        [DisplayName("Price:")]
         public decimal Price { get; set; }
 
-        [DisplayName("Vegeterian")]
         public bool IsVegetarian { get; set; }
 
-        [DisplayName("Vegan")]
         public bool IsVegan { get; set; }
 
-        [DisplayName("Fries")]
         public bool HasFries { get; set; }
 
-        [DisplayName("Image URL:")]
-        [DataType(DataType.ImageUrl)]
         public string ImageURL { get; set; }
 
         public Burger()
@@ -55,7 +48,7 @@ namespace BurgerApp.Models.Domain
 
         internal void SetId(int id)
         {
-            Id=id;
+            Id = id;
         }
     }
 }

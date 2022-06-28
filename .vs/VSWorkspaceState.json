@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BurgerApp",
+    "\\BurgerApp\\Controllers",
+    "\\BurgerApp\\Models",
+    "\\BurgerApp\\Models\\ViewModel",
+    "\\BurgerApp\\Views",
+    "\\BurgerApp\\Views\\Burger"
+  ],
+  "SelectedNode": "\\BurgerApp\\Models\\ViewModel\\BurgerViewModel.cs",
+  "PreviewInSolutionExplorer": false
+}
