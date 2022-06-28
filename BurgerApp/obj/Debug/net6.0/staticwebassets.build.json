@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4Rtnhqbw6BDcEQIILpc8rlSLxmPq27VCslBXPxUWwno=",
+  "Hash": "YYUtdYyHkpbsOGNtpL7NhYMRcVJ0g0KD3fL5zbdk9Ow=",
   "Source": "BurgerApp",
   "BasePath": "_content/BurgerApp",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\C#\\BurgerApp\\BurgerApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\BurgerApp.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\C#\\BurgerApp\\BurgerApp\\wwwroot\\css\\ItemDesign.css",
+      "SourceId": "BurgerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\C#\\BurgerApp\\BurgerApp\\wwwroot\\",
+      "BasePath": "_content/BurgerApp",
+      "RelativePath": "css/ItemDesign.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ItemDesign.css"
     },
     {
       "Identity": "D:\\C#\\BurgerApp\\BurgerApp\\wwwroot\\css\\site.css",

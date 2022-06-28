@@ -8839,11 +8839,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\Burger\\BurgerApp\\BurgerApp.csproj",
+      "projectUniqueName": "D:\\C#\\BurgerApp\\BurgerApp\\BurgerApp.csproj",
       "projectName": "BurgerApp",
-      "projectPath": "C:\\Users\\User\\Documents\\Burger\\BurgerApp\\BurgerApp.csproj",
+      "projectPath": "D:\\C#\\BurgerApp\\BurgerApp\\BurgerApp.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Documents\\Burger\\BurgerApp\\obj\\",
+      "outputPath": "D:\\C#\\BurgerApp\\BurgerApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

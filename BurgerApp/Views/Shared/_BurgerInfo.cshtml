@@ -3,10 +3,12 @@
 	For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-
-<div style="width: 18rem; margin:4em; display:inline-block">
-		<a asp-controller="Burger" asp-action="Detail" asp-route-name="@Model.BurgerName"><img style="width:100%" src=@Model.BurgerURL class="card-img-top" alt="..."></a>
+<div class="item-container">
+		<a asp-controller="Burger" asp-action="Detail" asp-route-id="@Model.BurgerId"><img style="width:100%" src=@Model.BurgerURL class="card-img-top" alt="..."></a>
 		<div class="card-body">
 			<h5 class="card-title" style="text-align:center">@Model.BurgerName</h5>
 		</div>
-	</div>
+		<a asp-controller="Burger" asp-action="Edit" asp-route-id=@Model.BurgerId><button style="margin:0% 20%" type="button" class="btn btn-outline-primary">Edit</button></a>
+		<a asp-controller="Burger" asp-action="Delete" asp-route-id=@Model.BurgerId><button type="button" class="btn btn-outline-primary">Delete</button></a>
+</div>
+

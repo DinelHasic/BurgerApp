@@ -1,0 +1,70 @@
+﻿@model BurgerApp.Models.ViewModel.BurgerViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BurgerViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="BurgerId" class="control-label"></label>
+                <input asp-for="BurgerId" class="form-control" />
+                <span asp-validation-for="BurgerId" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label asp-for="BurgerName" class="control-label"></label>
+                <input asp-for="BurgerName" class="form-control" />
+                <span asp-validation-for="BurgerName" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label asp-for="BurgerPrice" class="control-label"></label>
+                <input asp-for="BurgerPrice" class="form-control" />
+                <span asp-validation-for="BurgerPrice" class="text-danger"></span>
+            </div>
+            <br/>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BurgerIsVegetarian" /> @Html.DisplayNameFor(model => model.BurgerIsVegetarian)
+                </label>
+            </div>
+            <br/>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BurgerIsVegan" /> @Html.DisplayNameFor(model => model.BurgerIsVegan)
+                </label>
+            </div>
+            <br/>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="BurgerHasFries" /> @Html.DisplayNameFor(model => model.BurgerHasFries)
+                </label>
+            </div>
+            <br/>
+            <div class="form-group">
+                <label asp-for="BurgerURL" class="control-label"></label>
+                <input asp-for="BurgerURL" class="form-control" />
+                <span asp-validation-for="BurgerURL" class="text-danger"></span>
+            </div>
+            </br>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

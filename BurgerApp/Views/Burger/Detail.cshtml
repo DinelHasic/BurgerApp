@@ -1,29 +1,29 @@
-﻿@model Burger
+﻿@model BurgerViewModel
 
 <div style="width: 18rem; margin:4em; margin:auto">
-	<img style="width:100%" src=@Model.ImageURL class="card-img-top" alt="...">
+	<img  class="mainImage" style="width:100%" src=@Model.BurgerURL class="card-img-top" alt="...">
 	<div class="card-body">
-		<h5 class="card-title" style="text-align:center">@Model.Name</h5>
+		<h5 class="card-title" style="text-align:center">@Model.BurgerName</h5>
 	</div>
 
 	<ul class="list-group list-group-flush">
-		@if (Model.IsVegan)
+		@if (Model.BurgerIsVegan)
 		{
 			<li class="list-group-item">
 				It is a Vegan burger.Our best ever vegan burger recipes are bursting with flavour and perfect for a summer feast.Choose from herby falafel
 				smoky tofu or spiced sweet potato.
 			</li>
 		}
-		@if (Model.IsVegetarian)
+		@if (Model.BurgerIsVegetarian)
 		{
 			<li class="list-group-item">	These vegeterian burgers are perfect for serving to friends who follow special diets.These burgers are vegetarian, of course.They’re also conveniently vegeterian, gluten free, nut free, egg free and soy free.</li>
 
 		}
-		@if (Model.HasFries)
+		@if (Model.BurgerHasFries)
 		{
 			<li class="list-group-item">They come with fries with the moust crispest fries you can get.</li>
 		}
-		<li class="list-group-item">Price:@Model.Price$</li>
+		<li class="list-group-item">Price:@Model.BurgerPrice</li>
 	</ul>
 </div>
 

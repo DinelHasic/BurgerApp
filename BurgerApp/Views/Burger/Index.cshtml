@@ -3,8 +3,9 @@
 
 
 <h1 style="color:#C82502;text-align:center">Burger Manue</h1>
+
 @foreach (BurgerMenuViewModel burger in @Model.Burgers)
 {
 	<partial name=_BurgerInfo model=burger></partial>
 }
-
+<a  asp-controller="Burger"  asp-action="Create"type="button" class="btn btn-outline-danger" id="createOrder-position">Create Burger</a>
