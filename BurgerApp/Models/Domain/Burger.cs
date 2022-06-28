@@ -8,24 +8,22 @@ namespace BurgerApp.Models.Domain
     {
         public int Id { get; set; }
 
-        [Required]
-        [StringLength(15, MinimumLength = 5)]
+        [DisplayName("Name:")]
         public string Name { get; set; }
 
-        [DataType(DataType.Currency)]
+        [DisplayName("Price:")]
         public decimal Price { get; set; }
 
-
-        [DisplayName("Is Vegeterian")]
+        [DisplayName("Vegeterian")]
         public bool IsVegetarian { get; set; }
 
-        [DisplayName("Is Vegeterian")]
+        [DisplayName("Vegan")]
         public bool IsVegan { get; set; }
 
-        [DisplayName("Has Fries")]
+        [DisplayName("Fries")]
         public bool HasFries { get; set; }
 
-        [DisplayName("Image URL")]
+        [DisplayName("Image URL:")]
         [DataType(DataType.ImageUrl)]
         public string ImageURL { get; set; }
 
