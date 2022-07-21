@@ -1,0 +1,9 @@
+D:\C#\BurgerApp\BurgerApp.Contracts\bin\Debug\BurgerApp.Contracts.dll
+D:\C#\BurgerApp\BurgerApp.Contracts\bin\Debug\BurgerApp.Contracts.pdb
+D:\C#\BurgerApp\BurgerApp.Contracts\bin\Debug\BurgerApp.Domain.dll
+D:\C#\BurgerApp\BurgerApp.Contracts\bin\Debug\BurgerApp.Domain.pdb
+D:\C#\BurgerApp\BurgerApp.Contracts\obj\Debug\BurgerApp.Contracts.csproj.AssemblyReference.cache
+D:\C#\BurgerApp\BurgerApp.Contracts\obj\Debug\BurgerApp.Contracts.csproj.CoreCompileInputs.cache
+D:\C#\BurgerApp\BurgerApp.Contracts\obj\Debug\BurgerApp.Contracts.csproj.CopyComplete
+D:\C#\BurgerApp\BurgerApp.Contracts\obj\Debug\BurgerApp.Contracts.dll
+D:\C#\BurgerApp\BurgerApp.Contracts\obj\Debug\BurgerApp.Contracts.pdb

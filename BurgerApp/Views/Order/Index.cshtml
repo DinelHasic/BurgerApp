@@ -1,0 +1,61 @@
+﻿@model IEnumerable<OrderInfoViewModel>
+
+@*
+	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="header-container">
+	<button type="button" class="CreateOrder"><a style="color:white;text-decoration:none" asp-action="Create" asp-controller="Order">Create</a></button>
+	<div style="width:15em" class="input-group">
+		<form class="form-container" asp-action="Index" asp-controller="Order" method="get">
+			<input type="search" class="form-control rounded" placeholder="Search User" aria-label="Search" aria-describedby="search-addon" id="SearchUserId" name="SearchUserId" value="" /><br />
+			<button type="submit" value="Submit" class="btn btn-dark">search</button>
+		</form>
+	</div>
+
+</div>
+
+
+<br />
+<br />
+<table class="table table-hover table-dark" style="text-align:center">
+	<thead>
+		<tr>
+			<th colspan="1">Id</th>
+			<th colspan="1">Price</th>
+			<th colspan="1">Date</th>
+			<th>User</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (OrderInfoViewModel order in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => order.OrderId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => order.OrderPrice)$
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem =>  order.DateOrder)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem =>  order.UserId)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-controller="Order" asp-route-id=@order.OrderId>Edit</a>
+				</td>
+				<td>
+					<a asp-action="Details" asp-controller="Order" asp-route-id=@order.OrderId>Details</a>
+				</td>
+				<td>
+					<a asp-action="Delete" asp-controller="Order" asp-route-id=@order.OrderId>Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

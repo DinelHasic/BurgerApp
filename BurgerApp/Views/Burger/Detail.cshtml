@@ -1,29 +1,32 @@
-﻿@model BurgerViewModel
+﻿@model BurgerInfoViewModel
 
-<div style="width: 18rem; margin:4em; margin:auto">
+@{
+
+}
+<div style="width: 18rem; margin:4em; margin:auto" id="burger-detail">
 	<img  class="mainImage" style="width:100%" src=@Model.BurgerURL class="card-img-top" alt="...">
 	<div class="card-body">
-		<h5 class="card-title" style="text-align:center">@Model.BurgerName</h5>
+		<h5 class="card-title" style="text-align:center;font-size:2.3em;">@Model.BurgerName</h5>
 	</div>
 
 	<ul class="list-group list-group-flush">
 		@if (Model.BurgerIsVegan)
 		{
-			<li class="list-group-item">
+			<li class="list-group-item" style="background-color:#783223">
 				It is a Vegan burger.Our best ever vegan burger recipes are bursting with flavour and perfect for a summer feast.Choose from herby falafel
 				smoky tofu or spiced sweet potato.
 			</li>
 		}
 		@if (Model.BurgerIsVegetarian)
 		{
-			<li class="list-group-item">	These vegeterian burgers are perfect for serving to friends who follow special diets.These burgers are vegetarian, of course.They’re also conveniently vegeterian, gluten free, nut free, egg free and soy free.</li>
+			<li class="list-group-item" style="background-color:#783223">These vegeterian burgers are perfect for serving to friends who follow special diets.These burgers are vegetarian, of course.They’re also conveniently vegeterian, gluten free, nut free, egg free and soy free.</li>
 
 		}
 		@if (Model.BurgerHasFries)
 		{
-			<li class="list-group-item">They come with fries with the moust crispest fries you can get.</li>
+			<li class="list-group-item" style="background-color:#783223">They come with fries with the moust crispest fries you can get.</li>
 		}
-		<li class="list-group-item">Price:@Model.BurgerPrice</li>
+		<li style="background-color:#783223" class="list-group-item">Price:@Model.BurgerPrice $</li>
 	</ul>
 </div>
 

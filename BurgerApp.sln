@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgerApp", "BurgerApp\BurgerApp.csproj", "{B3D16EA5-EDAE-4B94-AEF9-20A0CAFD187E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurgerApp", "BurgerApp\BurgerApp.csproj", "{B3D16EA5-EDAE-4B94-AEF9-20A0CAFD187E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgerApp.Domain", "BurgerApp.Domain\BurgerApp.Domain.csproj", "{C4215500-1722-4FCB-9274-FB1D50795254}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgerApp.Contracts", "BurgerApp.Contracts\BurgerApp.Contracts.csproj", "{426BA828-04FD-4125-8712-47FB00FA3EB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgerApp.Services", "BurgerApp.Services\BurgerApp.Services.csproj", "{FB7024C5-FE58-42BF-8FF2-5484154B4B27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurgerApp.Storage", "BurgerApp.Storage\BurgerApp.Storage.csproj", "{28687559-C0E6-4321-AEDA-A4FE5A0DCC83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{B3D16EA5-EDAE-4B94-AEF9-20A0CAFD187E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3D16EA5-EDAE-4B94-AEF9-20A0CAFD187E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3D16EA5-EDAE-4B94-AEF9-20A0CAFD187E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4215500-1722-4FCB-9274-FB1D50795254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4215500-1722-4FCB-9274-FB1D50795254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4215500-1722-4FCB-9274-FB1D50795254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4215500-1722-4FCB-9274-FB1D50795254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{426BA828-04FD-4125-8712-47FB00FA3EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{426BA828-04FD-4125-8712-47FB00FA3EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{426BA828-04FD-4125-8712-47FB00FA3EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{426BA828-04FD-4125-8712-47FB00FA3EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB7024C5-FE58-42BF-8FF2-5484154B4B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB7024C5-FE58-42BF-8FF2-5484154B4B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB7024C5-FE58-42BF-8FF2-5484154B4B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB7024C5-FE58-42BF-8FF2-5484154B4B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28687559-C0E6-4321-AEDA-A4FE5A0DCC83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28687559-C0E6-4321-AEDA-A4FE5A0DCC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28687559-C0E6-4321-AEDA-A4FE5A0DCC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28687559-C0E6-4321-AEDA-A4FE5A0DCC83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

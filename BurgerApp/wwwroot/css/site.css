@@ -15,6 +15,9 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: #783223;
+    color:white;
+   
 }
 
 #createOrder-position {
@@ -26,8 +29,7 @@ body {
     font-size: 0.9em;
     font-weight: bold;
     transition: 0.5s padding;
-    dot
-
+    border: 3px solid #BE2D0E;
 }
 
     #createOrder-position:hover {
@@ -38,3 +40,34 @@ body {
     #createOrder-position:active {
         color: rgb(180, 180, 180);
     }
+
+#burger-detail {
+   font-size:1em;
+   font-weight:700;
+}
+
+.CreateOrder {
+
+    width:4.9em;
+    background-color:black;
+}
+
+.CreateOrder:hover{
+   background-color:dimgrey;
+   opacity:0.9;
+}
+
+.header-container {
+    display: flex;
+    flex-wrap:nowrap;
+    column-gap: 58rem;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#SearchUserId {
+    placeholder:"Search User";
+}

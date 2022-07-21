@@ -1,6 +1,6 @@
-﻿@model BurgerApp.Models.ViewModel.BurgerViewModel
+﻿@model BurgerInfoViewModel
 
-<h4>BurgerViewModel</h4>
+<h4>Create Burger</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -10,11 +10,13 @@
                 <input asp-for="BurgerName" class="form-control" />
                 <span asp-validation-for="BurgerName" class="text-danger"></span>
             </div>
+            <br/>
             <div class="form-group">
                 <label asp-for="BurgerPrice" class="control-label"></label>
                 <input asp-for="BurgerPrice" class="form-control" />
                 <span asp-validation-for="BurgerPrice" class="text-danger"></span>
             </div>
+            <br/>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="BurgerIsVegetarian" /> @Html.DisplayNameFor(model => model.BurgerIsVegetarian)
@@ -30,11 +32,13 @@
                     <input class="form-check-input" asp-for="BurgerHasFries" /> @Html.DisplayNameFor(model => model.BurgerHasFries)
                 </label>
             </div>
+            <br/>
             <div class="form-group">
                 <label asp-for="BurgerURL" class="control-label"></label>
                 <input asp-for="BurgerURL" class="form-control" />
                 <span asp-validation-for="BurgerURL" class="text-danger"></span>
             </div>
+            <br/>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -43,7 +47,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" style="color:white;">Back to List</a>
 </div>
 
 @section Scripts {

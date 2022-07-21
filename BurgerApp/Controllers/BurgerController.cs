@@ -1,4 +1,7 @@
-﻿using BurgerApp.Models.Domain;
+﻿
+using BurgerApp.Contracts;
+using BurgerApp.Contracts.ViewModels.Burger;
+using BurgerApp.Models.Domain;
 using BurgerApp.Models.Mappers;
 using BurgerApp.Models.ViewModel;
 using BurgerApp.Storage;
@@ -9,17 +12,23 @@ namespace BurgerApp.Controllers
 
     public class BurgerController : Controller
     {
+        private readonly IBurgerServices _burgerService;
 
-        public IActionResult Index()
+        public BurgerController(IBurgerServices burgerService)
         {
-            BurgerManueViewModelList burgers = Database.Burgers.BurgersManueList();
+            _burgerService = burgerService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            IEnumerable<BurgerListViewModel>  burgers =  await _burgerService.GetAllBurgersAsync();
             return View(burgers);
         }
 
 
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Detail(int id)
         {
-            BurgerViewModel burger = Database.Burgers.FirstOrDefault(x => x.Id == id)?.BurgerView();
+
+            BurgerInfoViewModel burger = await _burgerService.GetBurgerByIdAsync(id);
 
             if (burger == null)
             {
@@ -29,9 +38,9 @@ namespace BurgerApp.Controllers
             return View(burger);
         }
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            BurgerViewModel burger = Database.Burgers.FirstOrDefault(x => x.Id == id).BurgerView();
+            BurgerInfoViewModel burger = await _burgerService.GetBurgerByIdAsync(id);
 
             if (burger == null)
             {
@@ -43,23 +52,22 @@ namespace BurgerApp.Controllers
 
 
         [HttpPost]
-        public IActionResult Edit(int id, BurgerViewModel burgerInfo)
+        public async Task<IActionResult> Edit(int id, BurgerInfoViewModel burgerInfo)
         {
-            Burger burger = Database.Burgers.SingleOrDefault(x => x.Id == id);
-
-            if (burger is null)
+            
+            if (burgerInfo is null)
             {
                 return NotFound();
             }
 
-            burger.Update(burgerInfo);
+            await _burgerService.UpdateBurgerAsync(id, burgerInfo);
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            BurgerViewModel burger = Database.Burgers.SingleOrDefault(x => x.Id == id).BurgerView();
+            BurgerInfoViewModel burger = await _burgerService.GetBurgerByIdAsync(id);
 
             if (burger is null)
             {
@@ -72,15 +80,13 @@ namespace BurgerApp.Controllers
         [HttpPost]
         public IActionResult Delete(int id, BurgerViewModel burger)
         {
-            Burger burgerToDelete = Database.Burgers.SingleOrDefault(x => x.Id == id);
 
             if (burger is null)
             {
                 return NotFound();
             }
 
-
-            Database.Burgers.Remove(burgerToDelete);
+            _burgerService.RemoveBurgerByIdAsync(id);
 
             return RedirectToAction("Index");
         }
@@ -88,24 +94,19 @@ namespace BurgerApp.Controllers
 
         public IActionResult Create()
         {
-            BurgerViewModel newBurger = new BurgerViewModel();
-
-            return View(newBurger);
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Create(BurgerViewModel newBurger)
+        public IActionResult Create(BurgerInfoViewModel newBurger)
         {
             if (newBurger is null)
             {
                 return NotFound();
             }
 
-            Burger burger = new Burger();
 
-            burger.Update(newBurger);
-            burger.SetId(Database.GetNextBurgerId());
-            Database.Burgers.Add(burger);
+            _burgerService.AddBurgerAsync(newBurger);
 
             return RedirectToAction("Index");
         }
