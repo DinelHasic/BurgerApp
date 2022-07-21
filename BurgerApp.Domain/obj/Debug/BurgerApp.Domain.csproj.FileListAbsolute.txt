@@ -1,6 +1,0 @@
-D:\C#\BurgerApp\BurgerApp.Domain\bin\Debug\BurgerApp.Domain.dll
-D:\C#\BurgerApp\BurgerApp.Domain\bin\Debug\BurgerApp.Domain.pdb
-D:\C#\BurgerApp\BurgerApp.Domain\obj\Debug\BurgerApp.Domain.csproj.AssemblyReference.cache
-D:\C#\BurgerApp\BurgerApp.Domain\obj\Debug\BurgerApp.Domain.csproj.CoreCompileInputs.cache
-D:\C#\BurgerApp\BurgerApp.Domain\obj\Debug\BurgerApp.Domain.dll
-D:\C#\BurgerApp\BurgerApp.Domain\obj\Debug\BurgerApp.Domain.pdb
