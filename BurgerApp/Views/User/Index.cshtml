@@ -1,0 +1,30 @@
+﻿@model IEnumerable<UserDetailListViewModel>
+
+@*
+	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<table class="table table-hover table-dark">
+	<thead class="thead-light">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">FirstName</th>
+			<th scope="col">LastName</th>
+			<th scope="col">Adress</th>
+			<th scope="col">PhoneNumber</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (UserDetailListViewModel user in @Model)
+		{
+			<tr>
+				<th scope="row">@user.UserId</th>
+				<td>@user.UserFirstName</td>
+				<td>@user.UserLastName</td>
+				<td>@user.UserAdress</td>
+				<td>@user.UserPhoneNumber</td>
+			</tr>
+		}
+	</tbody>
+</table>

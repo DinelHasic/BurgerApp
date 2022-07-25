@@ -27,7 +27,17 @@ namespace BurgerApp.Domain.Enteties
 
         }
 
-        public Burger(int id, string name, decimal price, bool isVegetarian, bool isVegan, bool hasFries, string imageURL)
+        public Burger(string name, decimal price, bool isVegetarian, bool isVegan, bool hasFries, string imageURL)
+        {
+            Name = name;
+            Price = price;
+            IsVegetarian = isVegetarian;
+            IsVegan = isVegan;
+            HasFries = hasFries;
+            ImageURL = imageURL;
+        }
+
+        public Burger(int id,string name, decimal price, bool isVegetarian, bool isVegan, bool hasFries, string imageURL)
         {
             Id = id;
             Name = name;
@@ -37,6 +47,7 @@ namespace BurgerApp.Domain.Enteties
             HasFries = hasFries;
             ImageURL = imageURL;
         }
+
 
 
         internal void SetId(int id)

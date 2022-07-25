@@ -36,7 +36,7 @@ namespace BurgerApp.Services
             int burgerId = _burgerRepository.GenerateBurgerId();
 
 
-            Burger burger = new Burger(burgerId, newBurger.BurgerName, newBurger.BurgerPrice, newBurger.BurgerIsVegetarian, newBurger.BurgerIsVegan, newBurger.BurgerHasFries, newBurger.BurgerURL);
+            Burger burger = new Burger(newBurger.BurgerName, newBurger.BurgerPrice, newBurger.BurgerIsVegetarian, newBurger.BurgerIsVegan, newBurger.BurgerHasFries, newBurger.BurgerURL);
 
             _burgerRepository.Insert(burger);
 
@@ -53,7 +53,7 @@ namespace BurgerApp.Services
 
         public async Task RemoveBurgerByIdAsync(int id)
         {
-            _burgerRepository.DeleteBurgerByIdAsync(id);
+           await _burgerRepository.DeleteBurgerByIdAsync(id);
 
             await _unitOfWork.SaveChangesAsync();
         }

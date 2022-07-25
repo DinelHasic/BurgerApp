@@ -2,6 +2,7 @@
 using BurgerApp.Contracts.ViewModels.Order;
 using BurgerApp.Domain.Enteties;
 using BurgerApp.Domain.Repository;
+using BurgerApp.Domain.UnitOfWork;
 using BurgerApp.Services.Mapper;
 using System;
 using System.Collections.Generic;
@@ -16,54 +17,57 @@ namespace BurgerApp.Services
         private IOrderRepository _orderRepository;
         private IBurgerRepository _bragerRepository;
         private IUserRepository _userRepository;
-        public OrderServices(IOrderRepository orderRepository,IBurgerRepository burgerRepository,IUserRepository userRepository)
+        private IUnitOfWork _unitOfWork;
+        public OrderServices(IOrderRepository orderRepository, IBurgerRepository burgerRepository, IUserRepository userRepository, IUnitOfWork unitOfWork)
         {
             _orderRepository = orderRepository;
             _bragerRepository = burgerRepository;
-            _userRepository = userRepository;  
+            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task AddNewOrder(OrderViewModel order)
         {
             Order newOrder = new Order();
 
-            int Id = _orderRepository.GenerateOrderId();
 
-            List<Burger> burgers =  await _bragerRepository.GetBurgersByIdAsync(order.BurgersId);
+            List<Burger> burgers = await _bragerRepository.GetBurgersByIdAsync(order.BurgersId);
 
-            User user = _userRepository.GetUserById(order.UserId);
-
-            newOrder.Id = Id;
+            User user = await _userRepository.GetUserById(order.UserId);
 
             newOrder.Burgers = burgers;
 
             newOrder.User = user;
 
             _orderRepository.Insert(newOrder);
+
+            await _unitOfWork.SaveChangesAsync();
         }
 
-        public void DeleteOrder(OrderViewModel order)
+        public async Task DeleteOrder(OrderViewModel order)
         {
             _orderRepository.DeleteOrderById(order.Id);
+
+            await _unitOfWork.SaveChangesAsync();
         }
 
-        public IReadOnlyList<OrderInfoViewModel> GetAllOrders()
+        public async Task<IReadOnlyList<OrderInfoViewModel>> GetAllOrders()
         {
-            IReadOnlyList<Order> orders = _orderRepository.GetAllOrder();
+            IReadOnlyList<Order> orders = await _orderRepository.GetAllOrder();
 
             return orders.Select(x => x.ToOrderInfoViewModel()).ToArray();
         }
 
-        public OrderInfoViewModel GetOrderDetailById(int id)
+        public async Task<OrderInfoViewModel> GetOrderDetailById(int id)
         {
-            Order order = _orderRepository.FindOrderById(id);
+            Order order = await _orderRepository.FindOrderById(id);
 
-            return  order.ToOrderInfoViewModel();
+            return order.ToOrderInfoViewModel();
         }
 
-        public OrderViewModel GetOrderById(int id)
+        public async Task<OrderViewModel> GetOrderById(int id)
         {
-            Order order = _orderRepository.FindOrderById(id);
+            Order order = await _orderRepository.FindOrderById(id);
 
             return order.ToOrderViewModel();
         }
@@ -71,22 +75,25 @@ namespace BurgerApp.Services
 
         public async Task UpdateOrder(int id, OrderInfoViewModel updateOrder)
         {
-            Order order = _orderRepository.FindOrderById(id);
+            Order order = await  _orderRepository.FindOrderById(id);
 
-            List<Burger> burger = await _bragerRepository.GetBurgersByIdAsync(updateOrder.BurgersId);
+            List<Burger> burgers = await _bragerRepository.GetBurgersByIdAsync(updateOrder.BurgersId);
 
-            User user = _userRepository.GetUserById(updateOrder.UserId);
+
+            User user = await _userRepository.GetUserById(updateOrder.UserId);
+
 
             order.OrderDate = updateOrder.DateOrder;
+            order.Burgers = burgers;
             order.User = user;
-            order.Burgers = burger;
+            await _unitOfWork.SaveChangesAsync();
         }
 
-        public IEnumerable<OrderInfoViewModel> SortByIdOrder(string searchUserId)
+        public async Task<IEnumerable<OrderInfoViewModel>> SortByIdOrder(string searchUserId)
         {
             int.TryParse(searchUserId, out int id);
 
-            IReadOnlyList<Order> orders = _orderRepository.OrderOrdersById(id);
+            IReadOnlyList<Order> orders = await _orderRepository.OrderOrdersById(id);
 
             return orders.Select(x => x.ToOrderInfoViewModel()).ToArray();
         }

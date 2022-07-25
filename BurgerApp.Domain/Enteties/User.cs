@@ -14,9 +14,8 @@ namespace BurgerApp.Domain.Enteties
 
         public List<Order> Orders { get; set; }
 
-        public User(int id, string firstName, string lastName, string adress, string phoneNumber)
+        public User(string firstName, string lastName, string adress, string phoneNumber)
         {
-            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Adress = adress;

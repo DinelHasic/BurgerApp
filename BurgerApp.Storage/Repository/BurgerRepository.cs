@@ -47,7 +47,10 @@ namespace BurgerApp.Storage.Repository
 
         public async Task<List<Burger>> GetBurgersByIdAsync(List<int> burgersId)
         {
-            return await  GetAll().Where(x => burgersId.Contains(x.Id)).ToListAsync();
+            Console.WriteLine(GetAll().Any(x => burgersId.Contains(x.Id)));
+
+            return GetAll().Where(x => burgersId.Contains(x.Id)).ToList();
+            
         }
     }
 }

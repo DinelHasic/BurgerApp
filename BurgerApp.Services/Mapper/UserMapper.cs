@@ -19,5 +19,17 @@ namespace BurgerApp.Services.Mapper
             };
         }
 
+        public static UserDetailListViewModel ToUserDetailListViewModel(this User user)
+        {
+            return new UserDetailListViewModel
+            {
+                UserId = user.Id,
+                UserFirstName = user.FirstName,
+                UserLastName = user.LastName,
+                UserAdress = user.Adress,
+                UserPhoneNumber = user.PhoneNumber,
+            };
+        }
+
     }
 }

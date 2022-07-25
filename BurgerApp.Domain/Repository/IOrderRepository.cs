@@ -9,15 +9,16 @@ namespace BurgerApp.Domain.Repository
 {
     public interface IOrderRepository
     {
-        IReadOnlyList<Order> GetAllOrder();
+        Task<IReadOnlyList<Order>> GetAllOrder();
 
-        Order FindOrderById(int orderId);
+        Task<Order> FindOrderById(int orderId);
 
-        void DeleteOrderById(int id);
+        Task DeleteOrderById(int id);
 
         int GenerateOrderId();
 
         void Insert(Order order);
-        IReadOnlyList<Order> OrderOrdersById(int id);
+
+        Task<IReadOnlyList<Order>> OrderOrdersById(int id);
     }
 }

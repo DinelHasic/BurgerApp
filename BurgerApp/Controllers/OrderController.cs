@@ -17,17 +17,17 @@ namespace BurgerApp.Controllers
             _userServices = userServices;
         }
 
-        public IActionResult Index(string SearchUserId)
+        public async Task<IActionResult> Index(string SearchUserId)
         {
             IEnumerable<OrderInfoViewModel> orders;
 
             if (string.IsNullOrEmpty(SearchUserId))
             {
-                 orders = _orderServices.GetAllOrders();
+                 orders = await _orderServices.GetAllOrders();
             }
             else
             {
-                 orders = _orderServices.SortByIdOrder(SearchUserId);
+                 orders = await _orderServices.SortByIdOrder(SearchUserId);
             }
 
             return View(orders);
@@ -37,9 +37,9 @@ namespace BurgerApp.Controllers
         {
             ViewBag.Burgers = await _burgerServices.GetAllBurgersAsync();
 
-            ViewBag.Users = _userServices.GetAllUsers();
+            ViewBag.Users =  await _userServices.GetAllUsers();
 
-            OrderInfoViewModel orders = _orderServices.GetOrderDetailById(id);
+            OrderInfoViewModel orders =  await _orderServices.GetOrderDetailById(id);
 
             return View(orders);
         }
@@ -63,27 +63,27 @@ namespace BurgerApp.Controllers
 
             ViewBag.Burgers = await _burgerServices.GetAllBurgersAsync();
 
-            ViewBag.Users = _userServices.GetAllUsers();
+            ViewBag.Users =  await _userServices.GetAllUsers();
 
             return View(orderViewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(OrderViewModel order)
+        public async Task<IActionResult> Create(OrderViewModel order)
         {
             if(order is null)
             {
                 return NotFound();
             }
 
-            _orderServices.AddNewOrder(order);
+            await _orderServices.AddNewOrder(order);
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            OrderViewModel order = _orderServices.GetOrderById(id);
+            OrderViewModel order = await _orderServices.GetOrderById(id);
 
             return View(order);
         }

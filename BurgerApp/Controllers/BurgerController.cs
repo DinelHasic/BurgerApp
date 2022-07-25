@@ -21,6 +21,7 @@ namespace BurgerApp.Controllers
         public async Task<IActionResult> Index()
         {
             IEnumerable<BurgerListViewModel>  burgers =  await _burgerService.GetAllBurgersAsync();
+
             return View(burgers);
         }
 
@@ -46,7 +47,6 @@ namespace BurgerApp.Controllers
             {
                 return NotFound();
             }
-
             return View(burger);
         }
 
@@ -78,7 +78,7 @@ namespace BurgerApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(int id, BurgerViewModel burger)
+        public async Task<IActionResult> Delete(int id, BurgerViewModel burger)
         {
 
             if (burger is null)
@@ -86,7 +86,7 @@ namespace BurgerApp.Controllers
                 return NotFound();
             }
 
-            _burgerService.RemoveBurgerByIdAsync(id);
+            await _burgerService.RemoveBurgerByIdAsync(id);
 
             return RedirectToAction("Index");
         }
@@ -98,7 +98,7 @@ namespace BurgerApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(BurgerInfoViewModel newBurger)
+        public async Task<IActionResult> Create(BurgerInfoViewModel newBurger)
         {
             if (newBurger is null)
             {
@@ -106,7 +106,7 @@ namespace BurgerApp.Controllers
             }
 
 
-            _burgerService.AddBurgerAsync(newBurger);
+           await _burgerService.AddBurgerAsync(newBurger);
 
             return RedirectToAction("Index");
         }

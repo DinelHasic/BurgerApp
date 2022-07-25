@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,15 @@ namespace BurgerApp.Domain.Enteties
     {
 
         [ForeignKey(nameof(UserFk))]
+
         public User User { get; set; }
 
         public int UserFk { get; set; }
 
+        [Required]
         public List<Burger> Burgers { get; set; }
 
-
+        [DataType(DataType.DateTime)]
         public DateTime OrderDate = DateTime.Now;
 
         public decimal TotalPrice()

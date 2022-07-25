@@ -27,7 +27,7 @@ namespace BurgerApp.Services.Mapper
             return new OrderViewModel
             {
                 Id = order.Id,
-                UserId = order.User.Id,
+                UserId = order.UserFk,
                 BurgersId = order.Burgers.Select(x => x.Id).ToList()
             };
         }

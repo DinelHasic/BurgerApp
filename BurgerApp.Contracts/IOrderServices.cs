@@ -9,18 +9,18 @@ namespace BurgerApp.Contracts
 {
     public interface IOrderServices
     {
-        IReadOnlyList<OrderInfoViewModel> GetAllOrders();
+        Task<IReadOnlyList<OrderInfoViewModel>> GetAllOrders();
 
         Task AddNewOrder(OrderViewModel order);
 
-        OrderInfoViewModel GetOrderDetailById(int id);
+        Task<OrderInfoViewModel> GetOrderDetailById(int id);
 
-        OrderViewModel GetOrderById(int id);
+        Task<OrderViewModel> GetOrderById(int id);
 
         Task UpdateOrder(int id, OrderInfoViewModel updateOrder);
 
-        void DeleteOrder(OrderViewModel order);
+        Task DeleteOrder(OrderViewModel order);
 
-        IEnumerable<OrderInfoViewModel> SortByIdOrder(string searchUserId);
+        Task<IEnumerable<OrderInfoViewModel>> SortByIdOrder(string searchUserId);
     }
 }

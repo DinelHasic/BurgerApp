@@ -52,6 +52,7 @@
     <Compile Include="ViewModels\Order\OrderViewModel.cs" />
     <Compile Include="ViewModels\Order\OrderInfoViewModel.cs" />
     <Compile Include="ViewModels\User\UserInfoViewModel.cs" />
+    <Compile Include="ViewModels\User\UserDetailListViewModel.cs" />
     <Compile Include="ViewModels\Utils\DateValidationAttribute.cs" />
   </ItemGroup>
   <ItemGroup>

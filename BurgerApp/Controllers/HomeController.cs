@@ -1,5 +1,8 @@
-﻿using BurgerApp.Models;
+﻿using BurgerApp.Contracts;
+using BurgerApp.Contracts.ViewModels.Burger;
+using BurgerApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace BurgerApp.Controllers
@@ -8,14 +11,19 @@ namespace BurgerApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IBurgerServices _burgerService;
+
+        public HomeController(ILogger<HomeController> logger,IBurgerServices burgerServices)
         {
             _logger = logger;
+            _burgerService = burgerServices;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            IEnumerable<BurgerListViewModel> burgers = await _burgerService.GetAllBurgersAsync();
+
+            return View(burgers);
         }
 
         public IActionResult Privacy()

@@ -1,6 +1,7 @@
 ﻿using BurgerApp.Domain.Enteties;
 using BurgerApp.Domain.Repository;
 using BurgerApp.Storage.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,43 +10,48 @@ using System.Threading.Tasks;
 
 namespace BurgerApp.Storage.Repository
 {
-    public class OrderRepository : IOrderRepository
-    {
-        public void DeleteOrderById(int id)
-        {
-            Order order = BurgerDatabase.Orders.FirstOrDefault(o => o.Id == id);
 
-            BurgerDatabase.Orders.Remove(order);
+    public class OrderRepository :  ReposiotyBase<Order>,IOrderRepository
+    {
+        public OrderRepository(IBurgerDbContext burgerDbContext) : base(burgerDbContext)
+        {
+
         }
 
-        public Order FindOrderById(int orderId)
+        public async Task DeleteOrderById(int id)
         {
-            return BurgerDatabase.Orders.FirstOrDefault(o => o.Id == orderId);
+            Order order = await GetById(id).SingleOrDefaultAsync();
+            RemoveEntity(order);
+        }
+
+        public async Task<Order> FindOrderById(int orderId)
+        {
+            return await GetById(orderId).Include(x => x.Burgers).SingleOrDefaultAsync();
         }
 
         public int GenerateOrderId()
         {
-            if (BurgerDatabase.Orders.Count == 0)
+            if (GetAll().Count() == 0)
             {
                 return 1;
             }
 
-            return BurgerDatabase.Orders.Max(x => x.Id) + 1;
+            return  GetAll().Max(x => x.Id) + 1;
         }
 
-        public IReadOnlyList<Order> GetAllOrder()
+        public async Task<IReadOnlyList<Order>> GetAllOrder()
         {
-            return BurgerDatabase.Orders;
+            return await GetAll().Include(x => x.Burgers).Include(x => x.User).ToArrayAsync();
         }
 
         public void Insert(Order order)
         {
-           BurgerDatabase.Orders.Add(order);
+            InsterEntity(order);
         }
 
-        public IReadOnlyList<Order> OrderOrdersById(int id)
+        public async Task<IReadOnlyList<Order>> OrderOrdersById(int id)
         {
-           return BurgerDatabase.Orders.Where(x => x.User.Id == id).ToArray();
+           return await GetAll().Include(x => x.User).Include(x => x.Burgers).Where(x => x.User.Id == id).ToArrayAsync();
         }
     }
 }

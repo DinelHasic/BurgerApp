@@ -9,7 +9,10 @@ namespace BurgerApp.Domain.Repository
 {
     public interface IUserRepository
     {
-        User GetUserById(int id);
-        IReadOnlyList<User> GetUsers();
+        Task<User> GetUserById(int id);
+
+        Task<IReadOnlyList<User>> GetUsers();
+        void AddUser(User user);
+        Task<int> GenerateUserId();
     }
 }
